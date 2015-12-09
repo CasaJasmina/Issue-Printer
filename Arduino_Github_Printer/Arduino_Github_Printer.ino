@@ -437,13 +437,14 @@ void PrinterWrapM(String StringTwo) {       //////////This method is used to get
 //This method is usefull if the string is too long to be parsed
 //It reads from the client just the beginning of the string 
 //and throws an exeption if the PullRequestEvent is detected
-/*  for (int a = 0; a < 8; a++) {                   
+
+/*  for (int a = 0; a < 8; a++) {                    //Read the string until the type content
     String  lineProv = client.readStringUntil('"');
     line = line + lineProv + "\"";
   }
 
-  if (line.endsWith("\"PullRequestEvent\"")) {
-    int open = 0;
+  if (line.endsWith("\"PullRequestEvent\"")) {      //check if its type is "PullRequestEvent"
+    int open = 0;                                  //if yes read only a few lines 
     int closed = 0;
     for (int c = 0; c < 10; c++) {
       line2 = client.readStringUntil('}');
@@ -470,7 +471,7 @@ void PrinterWrapM(String StringTwo) {       //////////This method is used to get
     line = line + "]";
   }
   else {
-    line2 = client.readStringUntil('\n');
+    line2 = client.readStringUntil('\n');        //Otherwise read the whole string
     line = line + line2;
   }
 
