@@ -2,16 +2,16 @@
 ### Bringing GitHub issues in the physical world
 The Issue_Thermal_Printer is a little printer, connected to Arduino, that automatically prints out comments, commits and issues from GitHub.
 
-<img src="https://github.com/CasaJasmina/Issue_ThermalPrinter/blob/master/Img/Printer.jpg " width="400" /> 
+<img src="https://github.com/CasaJasmina/Issue_ThermalPrinter/blob/master/Img/tot.jpg" width="800" /> 
 
-## Connecting the printer
+### Connecting the printer
 
 In order to connect the printer to the Arduino you only need three wires: the red, the balck and the blue one.
 The red one goes in the vin pin and is needed for the power supply, the balck one is for the ground and the blue one, which is where datas pass through, goes in the tx pin.
 
 
 
-## Loading sketches
+### Loading sketches
 
 Before loading any sketch you need to install the [adafruit library](https://github.com/adafruit/Adafruit-Thermal-Printer-Library) and the [json library](https://github.com/bblanchon/ArduinoJson).
 In this repository you will find an Arduino sketch ready to be loaded([Arduino code](https://github.com/CasaJasmina/Issue_ThermalPrinter/tree/master/Arduino_Github_Printer)).
@@ -19,11 +19,11 @@ All the .h files are bitmap of images made with the processing sketch that you c
 
 
 
-## Creating the enclosure
+### Creating the enclosure
 
 
 
-### Notes about the sketch
+#### Notes about the sketch
 
 The Arduino code connects to an unencrypted Wifi network and
 print out the events of a certain repository from github.com.
@@ -37,7 +37,7 @@ what kinf of response you are going to recieve.
 
 
 
-## BOM
+### BOM
 
 | part		        | Quantity | Link |
 | -------------     |:--------:| :--------:| 
@@ -48,6 +48,6 @@ what kinf of response you are going to recieve.
 
 
 
-##Credits
+###Credits
 
 
