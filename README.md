@@ -6,32 +6,28 @@ The Issue_Thermal_Printer is a little printer, connected to Arduino, that automa
 
 ### Connecting the printer
 
-In order to connect the printer to the Arduino you only need three wires: the red, the balck and the blue one.
-The red one goes in the vin pin and is needed for the power supply, the balck one is for the ground and the blue one, which is where datas pass through, goes in the tx pin.
+In order to connect the printer to the Arduino you only need three wires: the red, the balck and the blue one.</br>
+The red one goes in the vin pin and provides the current</br>the balck one is for the ground</br>the blue one, which is where datas pass through, goes in the tx pin.
 
 
 
 ### Loading sketches
 
 Before loading any sketch you need to install the [adafruit library](https://github.com/adafruit/Adafruit-Thermal-Printer-Library) and the [json library](https://github.com/bblanchon/ArduinoJson).
-In this repository you will find an Arduino sketch ready to be loaded([Arduino code](https://github.com/CasaJasmina/Issue_ThermalPrinter/tree/master/Arduino_Github_Printer)).
-All the .h files are bitmap of images made with the processing sketch that you can find in the Adafruit's library examples.
-
-
-
-### Creating the enclosure
+In this repository you will find an [Arduino sketch](https://github.com/CasaJasmina/Issue_ThermalPrinter/tree/master/Arduino_Github_Printer) ready to be loaded.
+All the .h files are bitmaps of images made with the processing sketch that you can find in the Adafruit's library examples.
 
 
 
 #### Notes about the sketch
 
 The Arduino code connects to an unencrypted Wifi network and
-print out the events of a certain repository from github.com.
+prints out the events of a certain repository from github.com.
 It reads github's api as a string and parse it using
 the Json library.
 Depending on the size of the github response you might not be able to parse it or even read it.
-In this case you can read only a part of the string and pare only that part. This method assume you already know 
-what kinf of response you are going to recieve.
+In this case you can read only a part of the string and parse only that part. This method assumes you already know 
+what kind of response you are going to recieve.
 
 
 
