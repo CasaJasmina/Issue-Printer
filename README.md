@@ -1,13 +1,13 @@
-# Issue_Thermal_Printer
+# Issue-Printer
 ### Bringing GitHub issues in the physical world
-The Issue_Thermal_Printer is a little printer, connected to Arduino, that automatically prints out comments, commits and issues from GitHub.
+The Issue-Printer is a little printer, connected to Arduino, that automatically prints out comments, commits and issues from GitHub.
 
-<img src="https://github.com/CasaJasmina/Issue_ThermalPrinter/blob/master/Img/tot.jpg" width="800" /> 
+<img src="https://github.com/CasaJasmina/Issue-Printer/blob/master/Img/printhorizontal.jpg" width="800" /> 
 
 ### Connecting the printer
 
 In order to connect the printer to the Arduino you only need three wires: the red, the balck and the blue one.</br>
-The red one goes in the vin pin and provides the current</br>the balck one is for the ground</br>the blue one, which is where datas pass through, goes in the tx pin.
+The red one goes in the vin pin and provides the current</br>The balck one is for the ground</br>The blue one, which is where datas pass through, goes in the tx pin.
 
 
 
@@ -28,6 +28,7 @@ the Json library.
 Depending on the size of the github response you might not be able to parse it or even read it.
 In this case you can read only a part of the string and parse only that part. This method assumes you already know 
 what kind of response you are going to recieve.
+More details in the [code](https://github.com/CasaJasmina/Issue_ThermalPrinter/tree/master/Arduino_Github_Printer)
 
 
 
@@ -44,6 +45,5 @@ what kind of response you are going to recieve.
 
 
 
-###Credits
 
 
