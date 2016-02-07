@@ -6,8 +6,8 @@ The Issue-Printer is a little thermal printer, connected to Arduino, that automa
 
 ### Connecting the printer
 
-In order to connect the printer to the Arduino you only need three wires: the red, the balck and the blue one.</br>
-The red one goes in the vin pin and provides the current</br>The balck one is for the ground</br>The blue one, which is where datas pass through, goes in the tx pin.
+In order to connect the printer to the Arduino you only need three wires: the red, the black and the blue one.</br>
+The red one goes in the vin pin and provides the current</br>The black one is for the ground</br>The blue one, which is where datas pass through, goes in the tx pin.
 
 
 
