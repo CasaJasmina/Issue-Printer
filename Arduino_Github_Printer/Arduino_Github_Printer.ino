@@ -1,6 +1,7 @@
 /*
- This code connects to an unencrypted Wifi network and
- prints out the events of a certain repository from github.com.
+ This code connects to a Wifi network and
+ prints out the comments and issues
+ of a certain repository from github.com.
  It reads github's api as a string and parse it using
  the Json library.
  Circuit:
@@ -109,10 +110,9 @@ void loop() {                   ///////////////////////////////////////// LOOP /
     }
   }
 
-  //Copy here the method at the end of the page if the string recieved is too long to be parsed
     
-  line = client.readStringUntil('\n');///////////Comment this line if you are using 
-  JsonArray& root = jsonBuffer.parseArray(line);//the method at the end of the page
+  line = client.readStringUntil('\n');
+  JsonArray& root = jsonBuffer.parseArray(line);
   
   if (!root.success()) {
     Serial.println("parseArray() failed");
@@ -135,16 +135,6 @@ void loop() {                   ///////////////////////////////////////// LOOP /
 
     else if (type.equals(IssueEvent)) {
       NewIssue(root);
-      Serial.println("closing connection");
-      Old_id = id;
-    }
-    else if (type.equals(PullEvents)) {
-      PullEvent(root);
-      Serial.println("closing connection");
-      Old_id = id;
-    }
-    else if (type.equals(PushEvents)) {
-      MergeEvent(root);
       Serial.println("closing connection");
       Old_id = id;
     }
@@ -265,67 +255,7 @@ void NewIssue(JsonArray & root1) {        //////////////////////////////////////
 
 
 
-void PullEvent(JsonArray & root1) {        ////////////////////////////////////////// PULL REQUEST  //////////////////////////////////////
 
-
-  String repo = root1[0]["repo"]["name"];
-  String title = root1[0]["payload"]["pull_request"]["title"];
-  String login = root1[0]["actor"]["login"];
-  String body = root1[0]["payload"]["pull_request"]["body"];
-  String data = root1[0]["payload"]["pull_request"]["created_at"];
-  printer.setLineHeight(30);
-  PrinterWrap(title);
-  printer.printBitmap(HeaderPull_width, HeaderPull_height, HeaderPull_data);
-  if (body.equals("")) {}
-  else {
-    PrinterWrapM(body);
-    printer.printBitmap(div4_width, div4_height, div4_data);
-  }
-
-  printer.setSize('S');
-  printer.justify('C');
-  printer.boldOn();
-  printer.println(repo);
-  printer.boldOff();
-  printer.println(login);
-  printer.println(data.substring(0, 10));
-
-  String label = root1[0]["payload"]["issue"]["labels"][0]["name"];
-  if (label.equals("")) {
-    printer.printBitmap(footer_width, footer_height, footer_data);
-  }
-  else {
-    printer.printBitmap(div3_width, div3_height, div3_data);
-    printer.inverseOn();
-    printer.println(" " + label + " ");
-    printer.inverseOff();
-  }
-  printer.println("");
-}
-
-
-
-void MergeEvent(JsonArray & root1) {        ////////////////////////////////////////// MERGE TO MASTER  //////////////////////////////////////
-
-  printer.setLineHeight(30);
-
-  String repo = root1[0]["repo"]["name"];
-  String login = root1[0]["actor"]["login"];
-  String data = root1[0]["created_at"];
-
-  printer.printBitmap(HeaderMerge_width, HeaderMerge_height, HeaderMerge_data);
-  printer.setLineHeight(30);
-
-  printer.setSize('S');
-  printer.justify('C');
-  printer.boldOn();
-  printer.println(repo);
-  printer.boldOff();
-  printer.println("Merged by " + login);
-  printer.println(data.substring(0, 10));
-  printer.printBitmap(footer_width, footer_height, footer_data);
-  printer.println("\n\n\n\n");
-}
 
 
 void PrinterWrap(String StringTwo) {       //////////This method is used to get the right words layout using L size//////////
@@ -430,58 +360,6 @@ void PrinterWrapM(String StringTwo) {       //////////This method is used to get
     }
   }
 }
-
-
-
-
-//This method is usefull if the string is too long to be parsed
-//It reads from the client just the beginning of the string 
-//and throws an exeption if the PullRequestEvent is detected
-
-/*  for (int a = 0; a < 8; a++) {                    //Read the string until the type content
-    String  lineProv = client.readStringUntil('"');
-    line = line + lineProv + "\"";
-  }
-
-  if (line.endsWith("\"PullRequestEvent\"")) {      //check if its type is "PullRequestEvent"
-    int open = 0;                                  //if yes read only a few lines 
-    int closed = 0;
-    for (int c = 0; c < 10; c++) {
-      line2 = client.readStringUntil('}');
-      line = line + line2 + "}";
-    }
-    if (line.length() - line.lastIndexOf('{') < 30) {
-      line = line + "\"";
-    }
-
-    for (int b = 0; b < line.length() ; b++) {
-      if (line[b] == '{') {
-        open++;
-      }
-      else if (line[b] == '}') {
-        closed++;
-      }
-    }
-    Serial.println(open);
-    Serial.println(closed);
-    int diff = open - closed;
-    for (int d = 0; d < diff; d++) {
-      line = line + "}";
-    }
-    line = line + "]";
-  }
-  else {
-    line2 = client.readStringUntil('\n');        //Otherwise read the whole string
-    line = line + line2;
-  }
-
-  JsonArray& root = jsonBuffer.parseArray(line);
-  Serial.println(line); */
-
-
-
-
-
 
 
 
