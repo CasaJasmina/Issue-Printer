@@ -17,8 +17,6 @@
 #include "HeaderNew.h"
 #include "HeaderClosed.h"
 #include "HeaderComment.h"
-#include "HeaderMerge.h"
-#include "HeaderPull.h"
 #include "footer.h"
 #include "div3.h"
 #include "div4.h"
@@ -38,9 +36,7 @@ WiFiSSLClient client;
 String Old_id;
 String IssueCommentEvent = "IssueCommentEvent";
 String IssueEvent = "IssuesEvent";
-String PullEvents = "PullRequestEvent";
 String closed = "closed";
-String PushEvents = "PushEvent";
 String line = "";
 String line2 = "";
 int counter = 0;
